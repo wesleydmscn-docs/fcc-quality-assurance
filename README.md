@@ -1,0 +1,26 @@
+## Quality Assurance
+
+In the Quality Assurance Certification, you'll learn how to write tests
+with Chai to ensure your applications work the way you expect them to.
+
+Then you'll build a chat application to learn advanced Node and Express
+concepts. You'll also use Pug as a template engine, Passport for 
+authentication, and Socket.io for real-time communication between the server
+and connected clients.
+
+## Content
+
+| Courses                                     | Lessons | Issue                                                              |
+| :------------------------------------------ | ------- | ------------------------------------------------------------------ |
+| [Quality Assurance and Testing with Chai]() | 25      | [#1](https://github.com/dmscn-docs/fcc-quality-assurance/issues/1) |
+| [Advanced Node and Express]()               | 22      | [#2](https://github.com/dmscn-docs/fcc-quality-assurance/issues/2) |
+
+## Certification Projects
+
+| Project                         | Solution         | Test        |
+| :------------------------------ | ---------------- | ----------- |
+| [Metric-Imperial Converter]()   | [source-code](#) | [replit](#) |
+| [Issue Tracker]()               | [source-code](#) | [replit](#) |
+| [Personal Library]()            | [source-code](#) | [replit](#) |
+| [Sudoku Solver]()               | [source-code](#) | [replit](#) |
+| [American British Translator]() | [source-code](#) | [replit](#) |
