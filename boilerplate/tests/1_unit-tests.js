@@ -25,12 +25,12 @@ suite("Unit Tests", function () {
     })
     // #4
     test("#isTrue, #isNotTrue", function () {
-      assert.isNotNull(true, "true is true")
-      assert.isNotNull(
+      assert.isTrue(true, "true is true")
+      assert.isTrue(
         !!"double negation",
         "Double negation of a truthy value is true"
       )
-      assert.isNotNull(
+      assert.isNotTrue(
         { value: "truthy" },
         "Objects are truthy, but are not boolean values"
       )
