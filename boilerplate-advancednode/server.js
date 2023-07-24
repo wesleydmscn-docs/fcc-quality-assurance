@@ -8,6 +8,8 @@ const app = express()
 const session = require("express-session")
 const passport = require("passport")
 
+const LocalStrategy = require("passport-local")
+
 const { ObjectID } = require("mongodb")
 
 app.set("view engine", "pug")
@@ -32,6 +34,18 @@ app.use(passport.session())
 
 myDB(async (client) => {
   const myDataBase = await client.db("database").collection("users")
+
+  passport.use(
+    new LocalStrategy((username, password, done) => {
+      myDataBase.findOne({ username: username }, (err, user) => {
+        console.log(`User ${username} attempted to log in.`)
+        if (err) return done(err)
+        if (!user) return done(null, false)
+        if (password !== user.password) return done(null, false)
+        return done(null, user)
+      })
+    })
+  )
 
   app.route("/").get((req, res) => {
     res.render("index", {
