@@ -8,6 +8,8 @@ const app = express()
 const session = require("express-session")
 const passport = require("passport")
 
+const { ObjectID } = require("mongodb")
+
 app.set("view engine", "pug")
 app.set("views", "./views/pug")
 
@@ -27,6 +29,17 @@ app.use(
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+passport.serializeUser((user, done) => {
+  done(null, user._id)
+})
+
+passport.deserializeUser((id, done) => {
+  // myDataBase.findOne({ _id: new ObjectID(id) }, (err, doc) => {
+  //  done(null, null);
+  // });
+  done(null, null)
+})
 
 app.route("/").get((req, res) => {
   res.render("index", { title: "Hello", message: "Please log in" })
