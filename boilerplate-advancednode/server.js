@@ -1,5 +1,6 @@
 "use strict"
 require("dotenv").config()
+
 const express = require("express")
 const myDB = require("./connection")
 const fccTesting = require("./freeCodeCamp/fcctesting.js")
@@ -70,6 +71,11 @@ myDB(async (client) => {
         res.redirect("/profile")
       }
     )
+
+  app.route("/logout").get((req, res) => {
+    req.logout()
+    res.redirect("/")
+  })
 
   app.route("/profile").get(ensureAuthenticated, (req, res) => {
     res.render("profile", {
