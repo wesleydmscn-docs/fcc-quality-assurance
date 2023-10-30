@@ -10,17 +10,15 @@ and connected clients.
 
 ## Content
 
-| Courses                                     | Lessons | Issue                                                              |
-| :------------------------------------------ | ------- | ------------------------------------------------------------------ |
-| [Quality Assurance and Testing with Chai]() | 25      | [#1](https://github.com/dmscn-docs/fcc-quality-assurance/issues/1) |
-| [Advanced Node and Express]()               | 22      | [#2](https://github.com/dmscn-docs/fcc-quality-assurance/issues/2) |
+| Courses                                                                                                                   | Lessons                                                            | Description                                                                                                                                                                                                                 |
+| :------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [QA and Testing with Chai](https://www.freecodecamp.org/learn/quality-assurance/#quality-assurance-and-testing-with-chai) | [25](https://github.com/dmscn-docs/fcc-quality-assurance/issues/1) | In this course, you'll learn about assertions, deep equality, truthiness, testing APIs, and other fundamentals for testing JavaScript applications.                                                                         |
+| [Advanced Node and Express](https://www.freecodecamp.org/learn/quality-assurance/#advanced-node-and-express)              | [22](https://github.com/dmscn-docs/fcc-quality-assurance/issues/2) | In this course, you'll learn how to use Passport to manage authentication, Pug to create reusable templates for quickly building the front end, and web sockets for real-time communication between the clients and server. |
 
 ## Certification Projects
 
-| Project                                                                                                                                    | Solution         | Test        |
-| :----------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------- |
-| [Metric-Imperial Converter](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter)     | [source-code](#) | [replit](#) |
-| [Issue Tracker](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/issue-tracker)                             | [source-code](#) | [replit](#) |
-| [Personal Library](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/personal-library)                       | [source-code](#) | [replit](#) |
-| [Sudoku Solver](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/sudoku-solver)                             | [source-code](#) | [replit](#) |
-| [American British Translator](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator) | [source-code](#) | [replit](#) |
+1. [Metric-Imperial Converter](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter)
+2. [Issue Tracker](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/issue-tracker)
+3. [Personal Library](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/personal-library)
+4. [Sudoku Solver](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/sudoku-solver)
+5. [American British Translator](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator)
