@@ -1,6 +1,7 @@
 function ConvertHandler() {
   this.getNum = function (input) {
-    let result = input.split(/[^0-9|/.$]/g).join("")
+    let result = input.split(/[^\d+(?:\.\d+)?/\d+$]/g).join("")
+
 
     if (result.includes("/") && result.split("/").length === 2) {
       const [number1, number2] = result.split("/")
@@ -11,43 +12,50 @@ function ConvertHandler() {
     }
 
     if (result.includes("/") && result.split("/").length > 2) {
-      throw new Error("Error on a double-fraction")
+      return null
     }
 
     if (Number(result) && !isNaN(result)) {
-      return result
+      return Number(result)
     }
 
     return 1
   }
 
   this.getUnit = function (input) {
-    let result = input.split(/[0-9]/g).join("")
+    let result = input
+      .split(/[\d+(?:\.\d+)?/\d+]/g)
+      .join("")
+      .toLowerCase()
 
-    return result
+    if (this.getReturnUnit(result)) {
+      return result
+    }
+
+    return null
   }
 
   this.getReturnUnit = function (initUnit) {
     const units = {
-      "gal": "L",
-      "l": "gal",
-      "mi": "km",
-      "km": "mi",
-      "lbs": "kg",
-      "kg": "lbs",
+      gal: "l",
+      l: "gal",
+      mi: "km",
+      km: "mi",
+      lbs: "kg",
+      kg: "lbs",
     }
 
-    return units[initUnit]
+    return units[initUnit] || null
   }
 
   this.spellOutUnit = function (unit) {
     const units = {
-      "gal": "Gallon",
-      "l": "Litre",
-      "mi": "Mile",
-      "km": "Kilometers",
-      "lbs": "Pounds",
-      "kg": "Kilo",
+      gal: "Gallons",
+      l: "Liters",
+      mi: "Miles",
+      km: "Kilometers",
+      lbs: "Pounds",
+      kg: "Kilos",
     }
 
     return units[unit]
@@ -64,21 +72,19 @@ function ConvertHandler() {
     const kmToMi = 0.62137
 
     const conversions = {
-      "gal": initNum * galToL,
-      "l": initNum * lToGal,
-      "mi": initNum * miToKm,
-      "km": initNum * kmToMi,
-      "lbs": initNum * lbsToKg,
-      "kg": initNum * kgToLbs,
+      gal: initNum * galToL,
+      l: initNum * lToGal,
+      mi: initNum * miToKm,
+      km: initNum * kmToMi,
+      lbs: initNum * lbsToKg,
+      kg: initNum * kgToLbs,
     }
 
     return conversions[initUnit]
   }
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result
-
-    return result
+    return `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`.toLowerCase()
   }
 }
 
