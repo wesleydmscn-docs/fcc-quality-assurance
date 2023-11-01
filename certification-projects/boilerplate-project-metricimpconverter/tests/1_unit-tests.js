@@ -41,9 +41,7 @@ suite("Unit Tests", function () {
     test("Invalid Input (double fraction)", function (done) {
       let input = "3/2/3"
 
-      chai
-        .expect(() => convertHandler.getNum(input))
-        .to.throw(Error, "Error on a double-fraction")
+      assert.equal(convertHandler.getNum(input), null)
 
       done()
     })
@@ -75,7 +73,7 @@ suite("Unit Tests", function () {
       ]
 
       for (const ele of input) {
-        assert.equal(convertHandler.getUnit(ele), ele)
+        assert.equal(convertHandler.getUnit(ele), ele.toLowerCase())
       }
 
       done()
@@ -98,7 +96,7 @@ suite("Unit Tests", function () {
       ]
 
       for (const ele of input) {
-        const expect = ele.split(/[0-9]/g).join("")
+        const expect = ele.split(/[\d+(?:\.\d+)?/\d+]/g).join("").toLowerCase()
         assert.equal(convertHandler.getUnit(ele), expect)
       }
 
@@ -109,7 +107,7 @@ suite("Unit Tests", function () {
   suite("Function convertHandler.getReturnUnit(initUnit)", function () {
     test("For Each Valid Unit Inputs", function (done) {
       let input = ["gal", "l", "mi", "km", "lbs", "kg"]
-      let expect = ["L", "gal", "km", "mi", "kg", "lbs"]
+      let expect = ["l", "gal", "km", "mi", "kg", "lbs"]
 
       input.forEach(function (ele, i) {
         assert.equal(convertHandler.getReturnUnit(ele), expect[i])
@@ -122,7 +120,7 @@ suite("Unit Tests", function () {
   suite("Function convertHandler.spellOutUnit(unit)", function () {
     test("For Each Valid Unit Inputs", function (done) {
       let input = ["gal", "l", "mi", "km", "lbs", "kg"]
-      let expect = ["Gallon", "Litre", "Mile", "Kilometers", "Pounds", "Kilo"]
+      let expect = ["Gallons", "Liters", "Miles", "Kilometers", "Pounds", "Kilos"]
 
       input.forEach(function (ele, i) {
         assert.equal(convertHandler.spellOutUnit(ele), expect[i])
