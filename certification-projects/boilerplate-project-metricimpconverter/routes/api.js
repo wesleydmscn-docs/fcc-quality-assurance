@@ -21,9 +21,9 @@ module.exports = function (app) {
 
     const string = convertHandler.getString(
       initNum,
-      convertHandler.spellOutUnit(initUnit),
+      convertHandler.spellOutUnit(initUnit.toLowerCase()),
       returnNum,
-      convertHandler.spellOutUnit(returnUnit)
+      convertHandler.spellOutUnit(returnUnit.toLowerCase())
     )
 
     return res.json({
