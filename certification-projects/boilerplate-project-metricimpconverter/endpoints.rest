@@ -1,0 +1,15 @@
+@baseurl = http://localhost:3004/api/convert
+
+GET {{baseurl}}?input=4gal
+
+###
+
+GET {{baseurl}}?input=1/2km
+
+### 
+
+GET {{baseurl}}?input=5.4/3lbs
+
+###
+
+GET {{baseurl}}?input=kg
