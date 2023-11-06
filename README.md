@@ -1,6 +1,6 @@
 ## Quality Assurance
 
-In the Quality Assurance Certification, you'll learn how to write tests
+In the [Quality Assurance Certification](https://freecodecamp.org/learn/quality-assurance/), you'll learn how to write tests
 with Chai to ensure your applications work the way you expect them to.
 
 Then you'll build a chat application to learn advanced Node and Express
@@ -17,7 +17,7 @@ and connected clients.
 
 ## Certification Projects
 
-1. [Metric-Imperial Converter](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter)
+1. [Metric-Imperial Converter](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/3)
 2. [Issue Tracker](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/issue-tracker)
 3. [Personal Library](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/personal-library)
 4. [Sudoku Solver](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/sudoku-solver)
