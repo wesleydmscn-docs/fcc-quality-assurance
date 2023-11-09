@@ -1,5 +1,8 @@
 "use strict"
 
+const mongoose = require("mongoose")
+const ObjectId = mongoose.Types.ObjectId
+
 const { Issue, Project } = require("../models/issueAndProject")
 
 module.exports = function (app) {
@@ -8,7 +11,37 @@ module.exports = function (app) {
 
     .get(function (req, res) {
       const { project } = req.params
-      res.end()
+      const criteriaFields = req.query
+      const matchCriteria = []
+
+      for (const [key, value] of Object.entries(criteriaFields)) {
+        if (value !== undefined) {
+          if (key === "_id") {
+            matchCriteria.push({ $match: { "issues._id": ObjectId(value) } })
+          } else if (key === "open") {
+            matchCriteria.push({ $match: { "issues.open": (/true/).test(value) } })
+          } else {
+            matchCriteria.push({ $match: { [`issues.${key}`]: value } })
+          }
+        }
+      }
+
+      const pipeline = [
+        { $match: { name: project } },
+        { $unwind: "$issues" },
+        ...matchCriteria,
+      ]
+
+      Project.aggregate(pipeline)
+        .exec()
+        .then((projectData) => {
+          if (projectData.length === 0) {
+            res.status(404).json({ error: "No matching data found" })
+          } else {
+            const issues = projectData.map((data) => data.issues)
+            res.json(issues)
+          }
+        })
     })
 
     .post(function (req, res) {
