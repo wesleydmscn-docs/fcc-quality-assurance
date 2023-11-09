@@ -19,7 +19,9 @@ module.exports = function (app) {
           if (key === "_id") {
             matchCriteria.push({ $match: { "issues._id": ObjectId(value) } })
           } else if (key === "open") {
-            matchCriteria.push({ $match: { "issues.open": (/true/).test(value) } })
+            matchCriteria.push({
+              $match: { "issues.open": /true/.test(value) },
+            })
           } else {
             matchCriteria.push({ $match: { [`issues.${key}`]: value } })
           }
@@ -92,6 +94,33 @@ module.exports = function (app) {
 
     .delete(function (req, res) {
       const { project } = req.params
-      res.end()
+      const { _id } = req.body
+
+      if (!_id) {
+        return res.json({ error: "missing _id" })
+      }
+
+      Project.findOne({ name: project }).then((projectData) => {
+        if (!projectData) {
+          return res.json({ error: "could not delete", _id: _id })
+        } else {
+          const targetIssue = projectData.issues.id(_id)
+
+          if (!targetIssue) {
+            return res.json({ error: "could not delete", _id: _id })
+          }
+
+          targetIssue.deleteOne()
+
+          projectData
+            .save()
+            .then(() => {
+              res.json({ result: "successfully deleted", _id: _id })
+            })
+            .catch(() => {
+              res.json({ error: "could not delete", _id: _id })
+            })
+        }
+      })
     })
 }
