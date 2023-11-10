@@ -17,7 +17,9 @@ module.exports = function (app) {
       for (const [key, value] of Object.entries(criteriaFields)) {
         if (value !== undefined) {
           if (key === "_id") {
-            matchCriteria.push({ $match: { "issues._id": ObjectId(value) } })
+            matchCriteria.push({
+              $match: { "issues._id": new ObjectId(value) },
+            })
           } else if (key === "open") {
             matchCriteria.push({
               $match: { "issues.open": /true/.test(value) },
@@ -89,7 +91,62 @@ module.exports = function (app) {
 
     .put(function (req, res) {
       const { project } = req.params
-      res.end()
+      const {
+        _id,
+        issue_title,
+        issue_text,
+        created_by,
+        assigned_to,
+        status_text,
+        open,
+      } = req.body
+
+      if (!_id) {
+        return res.json({ error: "missing _id" })
+      }
+
+      if (
+        !issue_title &&
+        !issue_text &&
+        !created_by &&
+        !assigned_to &&
+        !status_text &&
+        !open
+      ) {
+        return res.json({ error: "no update field(s) sent", _id: _id })
+      }
+
+      Project.findOne({ name: project })
+        .then((projectData) => {
+          if (!projectData) {
+            res.json({ error: "could not update", _id: _id })
+          } else {
+            const issueData = projectData.issues.id(_id)
+
+            if (!issueData) {
+              return res.json({ error: "could not update", _id: _id })
+            }
+
+            issueData.issue_title = issue_title || issueData.issue_title
+            issueData.issue_text = issue_text || issueData.issue_text
+            issueData.created_by = created_by || issueData.created_by
+            issueData.assigned_to = assigned_to || issueData.assigned_to
+            issueData.status_text = status_text || issueData.status_text
+            issueData.updated_on = new Date()
+            issueData.open = open
+
+            projectData.save().then((data) => {
+              if (!data) {
+                res.json({ error: "could not update", _id: _id })
+              } else {
+                res.json({ result: "successfully updated", _id: _id })
+              }
+            })
+          }
+        })
+        .catch(() => {
+          res.json({ error: "could not update", _id: _id })
+        })
     })
 
     .delete(function (req, res) {
