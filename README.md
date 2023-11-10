@@ -18,7 +18,7 @@ and connected clients.
 ## Certification Projects
 
 1. [Metric-Imperial Converter](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/3)
-2. [Issue Tracker](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/issue-tracker)
+2. [Issue Tracker](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/4)
 3. [Personal Library](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/personal-library)
 4. [Sudoku Solver](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/sudoku-solver)
 5. [American British Translator](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator)
