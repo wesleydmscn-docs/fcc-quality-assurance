@@ -48,7 +48,17 @@ suite("Functional Tests", function () {
       "POST /api/books with title => create book object/expect book object",
       function () {
         test("Test POST /api/books with title", function (done) {
-          //done();
+          chai
+            .request(server)
+            .post("/api/books")
+            .send({ title: "Eloquent JavaScript" })
+            .end(function (err, res) {
+              assert.equal(res.status, 200)
+              assert.property(res.body, "_id", "Book should contain _id")
+              assert.property(res.body, "title", "Book should contain title")
+
+              done()
+            })
         })
 
         test("Test POST /api/books with no title given", function (done) {
