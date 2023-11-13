@@ -159,7 +159,15 @@ suite("Functional Tests", function () {
         })
 
         test("Test POST /api/books/[id] with comment, id not in db", function (done) {
-          //done();
+          chai
+            .request(server)
+            .post("/api/books/invalid_id")
+            .send({ comment: "Hello World!" })
+            .end(function (err, res) {
+              assert.equal(res.text, "no book exists")
+
+              done()
+            })
         })
       }
     )
