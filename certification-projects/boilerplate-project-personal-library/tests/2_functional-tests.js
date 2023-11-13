@@ -59,6 +59,8 @@ suite("Functional Tests", function () {
               assert.property(res.body, "_id", "Book should contain _id")
               assert.property(res.body, "title", "Book should contain title")
 
+              getID = res.body._id
+
               done()
             })
         })
