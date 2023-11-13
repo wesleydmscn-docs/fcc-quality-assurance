@@ -92,7 +92,18 @@ module.exports = function (app) {
     })
 
     .delete(function (req, res) {
-      let bookid = req.params.id
-      //if successful response will be 'delete successful'
+      const { id } = req.params
+
+      Book.findByIdAndDelete({ _id: id })
+        .then((book) => {
+          if (!book) {
+            res.send("no book exists")
+          } else {
+            res.send("delete successful")
+          }
+        })
+        .catch(() => {
+          return res.send("no book exists")
+        })
     })
 }
