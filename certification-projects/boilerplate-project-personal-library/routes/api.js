@@ -78,16 +78,14 @@ module.exports = function (app) {
       if (!comment) return res.send("missing required field comment")
 
       Book.findOne({ _id: id }).then((bookData) => {
-        if (!bookData) {
-          res.send("no book exists")
-        } else {
-          bookData.comments.push(comment)
-          bookData.commentcount += 1
+        bookData.comments.push(comment)
+        bookData.commentcount += 1
 
-          bookData.save().then(({ title, _id, comments }) => {
-            res.json({ title, _id, comments })
-          })
-        }
+        bookData.save().then(({ title, _id, comments }) => {
+          res.json({ title, _id, comments })
+        })
+      }).catch(() => {
+        return res.send("no book exists")
       })
     })
 
