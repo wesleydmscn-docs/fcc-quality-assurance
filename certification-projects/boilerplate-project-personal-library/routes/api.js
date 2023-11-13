@@ -8,6 +8,24 @@
 
 "use strict"
 
+const mongoose = require("mongoose")
+
+mongoose.set("strictQuery", false)
+
+const url = process.env.DB
+
+mongoose
+  .connect(url)
+
+  .then((_result) => {
+    console.log("connected to MongoDB")
+  })
+  .catch((error) => {
+    console.log("error connecting to MongoDB:", error.message)
+  })
+
+const Book = require("../models/book")
+
 module.exports = function (app) {
   app
     .route("/api/books")
