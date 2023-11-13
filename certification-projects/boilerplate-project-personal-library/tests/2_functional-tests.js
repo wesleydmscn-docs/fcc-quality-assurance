@@ -102,7 +102,22 @@ suite("Functional Tests", function () {
       })
 
       test("Test GET /api/books/[id] with valid id in db", function (done) {
-        //done();
+        chai
+          .request(server)
+          .get(`/api/books/${getID}`)
+          .end(function (err, res) {
+            assert.equal(res.status, 200)
+            assert.property(res.body, "_id", "Book should contain _id")
+            assert.property(res.body, "title", "Book should contain title")
+            assert.property(
+              res.body,
+              "comments",
+              "Book should contain comments"
+            )
+            assert.isArray(res.body.comments, "comments should be an array")
+
+            done()
+          })
       })
     })
 
