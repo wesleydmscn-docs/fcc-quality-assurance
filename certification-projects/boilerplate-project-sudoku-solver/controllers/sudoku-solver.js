@@ -85,6 +85,33 @@ class SudokuSolver {
     return errorArray
   }
 
+  isSafe(grid, row, column, value) {
+    for (let x = 0; x <= 8; x++) {
+      if (grid[row][x] == value) {
+        return false
+      }
+    }
+
+    for (let x = 0; x <= 8; x++) {
+      if (grid[x][column] == value) {
+        return false
+      }
+    }
+
+    let startRow = row - (row % 3)
+    let startCol = column - (column % 3)
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (grid[i + startRow][j + startCol] == value) {
+          return false
+        }
+      }
+    }
+
+    return true
+  }
+
   checkRowPlacement(puzzleString, row, column, value) { }
 
   checkColPlacement(puzzleString, row, column, value) { }
