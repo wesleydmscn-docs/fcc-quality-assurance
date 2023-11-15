@@ -114,4 +114,23 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/check with multiple placement conflicts", (done) => {
+    chai
+      .request(server)
+      .post("/api/check")
+      .send({
+        puzzle: puzzle,
+        coordinate: "a1",
+        value: "3",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.valid, false)
+        assert.include(res.body.conflict, "row")
+        assert.include(res.body.conflict, "column")
+        assert.notInclude(res.body.conflict, "region")
+        done()
+      })
+  })
 })
