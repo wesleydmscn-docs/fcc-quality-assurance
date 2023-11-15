@@ -78,4 +78,19 @@ suite("Unit Tests", () => {
       "column should not be added to the array"
     )
   })
+
+  test("Handles invalid column placement", () => {
+    const row = "a"
+    const column = "7"
+    const value = "7"
+    assert.isArray(
+      solver.isSafeManual(input, row, column, value),
+      "array should be returned"
+    )
+    assert.include(
+      solver.isSafeManual(input, row, column, value),
+      "column",
+      "column should be added to the array"
+    )
+  })
 })
