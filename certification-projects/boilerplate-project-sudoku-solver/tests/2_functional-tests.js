@@ -216,4 +216,20 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/check with incorrect value", (done) => {
+    chai
+      .request(server)
+      .post("/api/check")
+      .send({
+        puzzle: puzzle,
+        coordinate: "a2",
+        value: "1",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.valid, false)
+        done()
+      })
+  })
 })
