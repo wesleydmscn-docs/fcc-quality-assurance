@@ -34,4 +34,19 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/solve with invalid characters in string", (done) => {
+    chai
+      .request(server)
+      .post("/api/solve")
+      .send({
+        puzzle:
+          ":6}3|9<>5@74%251&^5~~1%6$49%&7=+1_6-34^__^79sudoku$!@#puzzles><>1are#@2fun!63//5{",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.error, "Invalid characters in puzzle")
+        done()
+      })
+  })
 })
