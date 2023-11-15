@@ -79,4 +79,20 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/check with all fields", (done) => {
+    chai
+      .request(server)
+      .post("/api/check")
+      .send({
+        puzzle: puzzle,
+        coordinate: "a1",
+        value: "1",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.valid, true)
+        done()
+      })
+  })
 })
