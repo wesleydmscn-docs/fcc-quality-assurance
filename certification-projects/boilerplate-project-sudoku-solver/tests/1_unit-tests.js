@@ -93,4 +93,20 @@ suite("Unit Tests", () => {
       "column should be added to the array"
     )
   })
+
+  test("Handles valid 3x3 region placement", () => {
+    const row = "a"
+    const column = "3"
+    const value = "8"
+
+    assert.isArray(
+      solver.isSafeManual(input, row, column, value),
+      "array should be returned"
+    )
+    assert.notInclude(
+      solver.isSafeManual(input, row, column, value),
+      "region",
+      "region should not be added to the array"
+    )
+  })
 })
