@@ -112,6 +112,40 @@ class SudokuSolver {
     return true
   }
 
+  transform(puzzleString) {
+    let grid = [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+    let row = -1
+    let column = 0
+
+    for (let i = 0; i < puzzleString.length; i++) {
+      if (i % 9 == 0) {
+        row++
+      }
+      if (column % 9 == 0) {
+        column = 0
+      }
+
+      grid[row][column] = puzzleString[i] === "." ? 0 : puzzleString[i]
+      column++
+    }
+
+    return grid
+  }
+
+  transformBack(grid) {
+    return grid.flat().join("")
+  }
+
   checkRowPlacement(puzzleString, row, column, value) { }
 
   checkColPlacement(puzzleString, row, column, value) { }
