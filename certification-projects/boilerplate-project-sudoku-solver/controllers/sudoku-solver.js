@@ -43,6 +43,48 @@ class SudokuSolver {
     return false
   }
 
+  isSafeManual(puzzleString, selectedRow, selectedColumn, value) {
+    let grid = this.transform(puzzleString)
+
+    const rowArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+    selectedRow = selectedRow.toUpperCase()
+    const row = rowArray.indexOf(selectedRow)
+    const column = Number(selectedColumn) - 1
+
+    if (grid[row][column] !== 0) {
+      if (grid[row][column] === value) {
+        return true
+      }
+      return false
+    }
+
+    let errorArray = []
+    for (let x = 0; x <= 8; x++) {
+      if (grid[row][x] == value) {
+        errorArray.push("row")
+      }
+    }
+
+    for (let x = 0; x <= 8; x++) {
+      if (grid[x][column] == value) {
+        errorArray.push("column")
+      }
+    }
+
+    let startRow = row - (row % 3)
+    let startCol = column - (column % 3)
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (grid[i + startRow][j + startCol] == value) {
+          errorArray.push("region")
+        }
+      }
+    }
+
+    return errorArray
+  }
+
   checkRowPlacement(puzzleString, row, column, value) { }
 
   checkColPlacement(puzzleString, row, column, value) { }
