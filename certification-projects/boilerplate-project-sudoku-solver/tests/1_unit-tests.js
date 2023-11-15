@@ -142,4 +142,12 @@ suite("Unit Tests", () => {
     assert.isBoolean(solver.solve(invalidInput), "boolean should be returned")
     assert.isFalse(solver.solve(invalidInput), "false should be returned")
   })
+
+  test("Returns expected solution to valid puzzle", () => {
+    assert.isString(solver.solve(input), "string should be returned")
+    assert.deepEqual(
+      solver.solve(input),
+      "162349875974825136583176249857491362341562798296783514635214987418957623729638451"
+    )
+  })
 })
