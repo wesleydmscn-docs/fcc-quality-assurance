@@ -152,4 +152,19 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/check with missing fields", (done) => {
+    chai
+      .request(server)
+      .post("/api/check")
+      .send({
+        puzzle: puzzle,
+        value: "1",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.error, "Required field(s) missing")
+        done()
+      })
+  })
 })
