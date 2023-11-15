@@ -134,4 +134,12 @@ suite("Unit Tests", () => {
       "string should not include any periods"
     )
   })
+
+  test("Invalid string fails", () => {
+    const invalidInput =
+      "96.3.9..5.74.251..5..1.6.49..7..1.6.34....79....................1.....2....63..5."
+
+    assert.isBoolean(solver.solve(invalidInput), "boolean should be returned")
+    assert.isFalse(solver.solve(invalidInput), "false should be returned")
+  })
 })
