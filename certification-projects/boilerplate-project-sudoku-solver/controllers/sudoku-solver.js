@@ -15,6 +15,34 @@ class SudokuSolver {
     }
   }
 
+  solveCell(grid, row, column) {
+    if (row === 9 - 1 && column === 9) {
+      return grid
+    }
+
+    if (column === 9) {
+      row++
+      column = 0
+    }
+
+    if (grid[row][column] !== 0) {
+      return this.solveCell(grid, row, column + 1)
+    }
+
+    for (let value = 1; value < 10; value++) {
+      if (this.isSafe(grid, row, column, value)) {
+        grid[row][column] = value
+
+        if (this.solveCell(grid, row, column + 1)) {
+          return grid
+        }
+      }
+
+      grid[row][column] = 0
+    }
+    return false
+  }
+
   checkRowPlacement(puzzleString, row, column, value) { }
 
   checkColPlacement(puzzleString, row, column, value) { }
