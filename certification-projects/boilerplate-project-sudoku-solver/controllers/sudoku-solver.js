@@ -152,7 +152,16 @@ class SudokuSolver {
 
   checkRegionPlacement(puzzleString, row, column, value) { }
 
-  solve(puzzleString) { }
+  solve(puzzleString) {
+    let grid = this.transform(puzzleString)
+    let solved = this.solveCell(grid, 0, 0)
+
+    if (!solved) {
+      return false
+    }
+
+    return this.transformBack(solved)
+  }
 }
 
 module.exports = SudokuSolver
