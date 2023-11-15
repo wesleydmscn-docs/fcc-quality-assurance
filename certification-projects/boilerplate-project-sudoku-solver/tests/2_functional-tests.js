@@ -64,4 +64,19 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/solve with an unsolvable string", (done) => {
+    chai
+      .request(server)
+      .post("/api/solve")
+      .send({
+        puzzle:
+          "96.3.9..5.74.251..5..1.6.49..7..1.6.34....79....................1.....2....63..5.",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.error, "Puzzle cannot be solved")
+        done()
+      })
+  })
 })
