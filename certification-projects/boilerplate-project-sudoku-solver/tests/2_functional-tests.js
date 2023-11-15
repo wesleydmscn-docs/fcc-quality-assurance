@@ -167,4 +167,20 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("POST /api/check with invalid characters", (done) => {
+    chai
+      .request(server)
+      .post("/api/check")
+      .send({
+        puzzle: puzzle,
+        coordinate: "jk",
+        value: "1",
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200)
+        assert.equal(res.body.error, "Invalid coordinate")
+        done()
+      })
+  })
 })
