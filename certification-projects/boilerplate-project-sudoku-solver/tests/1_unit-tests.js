@@ -11,4 +11,14 @@ suite("Unit Tests", () => {
   test("Handles valid string", () => {
     assert.isUndefined(solver.validate(input), "no error object should return")
   })
+
+  test("Handles invalid characters in string", () => {
+    const invalidInput =
+      ":6}3|9<>5@74%251&^5~~1%6$49%&7=+1_6-34^__^79sudoku$!@#puzzles><>1are#@2fun!63//5{"
+    assert.propertyVal(
+      solver.validate(invalidInput),
+      "error",
+      "Invalid characters in puzzle"
+    )
+  })
 })
