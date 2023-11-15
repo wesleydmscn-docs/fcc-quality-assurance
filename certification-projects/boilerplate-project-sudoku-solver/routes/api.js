@@ -41,5 +41,21 @@ module.exports = function (app) {
     res.json({ valid: true })
   })
 
-  app.route("/api/solve").post((req, res) => { })
+  app.route("/api/solve").post((req, res) => {
+    const puzzle = req.body.puzzle
+
+    const validate = solver.validate(puzzle)
+
+    if (validate instanceof Object && validate.hasOwnProperty("error")) {
+      return res.json(solver.validate(puzzle))
+    }
+
+    const solved = solver.solve(puzzle)
+
+    if (!solved) {
+      return res.json({ error: "Puzzle cannot be solved" })
+    }
+
+    res.json({ solution: solved })
+  })
 }
