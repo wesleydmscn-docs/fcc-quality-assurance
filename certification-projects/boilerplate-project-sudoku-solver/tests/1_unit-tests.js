@@ -31,4 +31,19 @@ suite("Unit Tests", () => {
       "Expected puzzle to be 81 characters long"
     )
   })
+
+  test("Handles valid row placement", () => {
+    const row = "a"
+    const column = "1"
+    const value = "1"
+    assert.isArray(
+      solver.isSafeManual(input, row, column, value),
+      "array should be returned"
+    )
+    assert.notInclude(
+      solver.isSafeManual(input, row, column, value),
+      "row",
+      "row should not be added to the array"
+    )
+  })
 })
