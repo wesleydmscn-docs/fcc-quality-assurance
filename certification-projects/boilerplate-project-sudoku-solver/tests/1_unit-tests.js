@@ -125,4 +125,13 @@ suite("Unit Tests", () => {
       "region should be added to the array"
     )
   })
+
+  test("Valid string passes", () => {
+    assert.isString(solver.solve(input), "string should be returned")
+    assert.notInclude(
+      solver.solve(input),
+      ".",
+      "string should not include any periods"
+    )
+  })
 })
