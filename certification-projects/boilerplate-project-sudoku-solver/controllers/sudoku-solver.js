@@ -146,12 +146,6 @@ class SudokuSolver {
     return grid.flat().join("")
   }
 
-  checkRowPlacement(puzzleString, row, column, value) { }
-
-  checkColPlacement(puzzleString, row, column, value) { }
-
-  checkRegionPlacement(puzzleString, row, column, value) { }
-
   solve(puzzleString) {
     let grid = this.transform(puzzleString)
     let solved = this.solveCell(grid, 0, 0)
