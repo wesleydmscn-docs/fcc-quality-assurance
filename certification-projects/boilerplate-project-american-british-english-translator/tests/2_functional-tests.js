@@ -66,4 +66,17 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("Translation with empty text: POST request to /api/translate", (done) => {
+    chai
+      .request(server)
+      .post("/api/translate")
+      .set("content-type", "application/json")
+      .send({ text: "some text", locale: "bad-locale" })
+      .end((err, response) => {
+        assert.equal(response.body.error, "Invalid value for locale field")
+
+        done()
+      })
+  })
 })
