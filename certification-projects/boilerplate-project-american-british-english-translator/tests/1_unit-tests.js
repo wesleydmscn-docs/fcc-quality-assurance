@@ -101,7 +101,18 @@ suite("Unit Tests", () => {
     })
   })
 
-  suite("British English To American English", () => { })
+  suite("British English To American English", () => {
+    test("Translate We watched the footie match for a while. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican(
+          "We watched the footie match for a while."
+        ),
+        'We watched the <span class="highlight">soccer</span> match for a while.'
+      )
+
+      done()
+    })
+  })
 
   suite("Highlight Translations", () => { })
 })
