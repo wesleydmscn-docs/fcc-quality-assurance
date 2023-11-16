@@ -57,6 +57,23 @@ class Translator {
 
     return translated
   }
+
+  replaceTimeFormat(text) {
+    const timeRegex = /(([0-9]|0[0-9]|1[0-9]|2[0-3])(:|\.)([0-5][0-9]))/g
+    const changeTime = text.match(timeRegex)
+
+    if (changeTime) {
+      changeTime.forEach((time) => {
+        text =
+          text.replace(
+            time,
+            `<span class="highlight">${time.replace(":", ".")}</span>`
+          ) || text
+      })
+    }
+
+    return text
+  }
 }
 
 module.exports = Translator
