@@ -40,4 +40,17 @@ suite("Functional Tests", () => {
         done()
       })
   })
+
+  test("Translation with missing text field: POST request to /api/translate", (done) => {
+    chai
+      .request(server)
+      .post("/api/translate")
+      .set("content-type", "application/json")
+      .send({ locale: "american-to-british" })
+      .end((err, response) => {
+        assert.equal(response.body.error, "Required field(s) missing")
+
+        done()
+      })
+  })
 })
