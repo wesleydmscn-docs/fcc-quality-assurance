@@ -43,6 +43,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate The parking lot was full. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish("The parking lot was full."),
+        'The <span class="highlight">car park</span> was full.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
