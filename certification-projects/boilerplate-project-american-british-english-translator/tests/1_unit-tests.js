@@ -203,5 +203,14 @@ suite("Unit Tests", () => {
     })
   })
 
-  suite("Highlight Translations", () => { })
+  suite("Highlight Translations", () => {
+    test("Highlight translation in Mangoes are my favorite fruit.", (done) => {
+      assert.equal(
+        translator.americanToBritish("Mangoes are my favorite fruit."),
+        'Mangoes are my <span class="highlight">favourite</span> fruit.'
+      )
+
+      done()
+    })
+  })
 })
