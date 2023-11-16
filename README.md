@@ -21,4 +21,4 @@ and connected clients.
 2. [Issue Tracker](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/4)
 3. [Personal Library](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/5)
 4. [Sudoku Solver](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/6)
-5. [American British Translator](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator)
+5. [American British Translator](https://github.com/wesleydmscn-docs/fcc-quality-assurance/pull/7)
