@@ -90,6 +90,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Lunch is at 12:15 today. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish("Lunch is at 12:15 today."),
+        'Lunch is at <span class="highlight">12.15</span> today.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
