@@ -152,6 +152,17 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate I've just got bits and bobs in my bum bag. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican(
+          "I've just got bits and bobs in my bum bag."
+        ),
+        'I\'ve just got <span class="highlight">odds and ends</span> in my <span class="highlight">fanny pack</span>.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
