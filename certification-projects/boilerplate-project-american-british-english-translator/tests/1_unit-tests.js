@@ -174,6 +174,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Have you met Mrs Kalyani? to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican("Have you met Mrs Kalyani?"),
+        'Have you met <span class="highlight">Mr.</span>s Kalyani?'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
