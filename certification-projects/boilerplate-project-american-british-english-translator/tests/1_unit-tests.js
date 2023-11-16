@@ -163,6 +163,17 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate The car boot sale at Boxted Airfield was called off. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican(
+          "The car boot sale at Boxted Airfield was called off."
+        ),
+        'The <span class="highlight">swap meet</span> at Boxted Airfield was called off.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
