@@ -15,6 +15,20 @@ class Translator {
   americanToBritish(text) {
     return this.translate(text, this.wordDiffAndSpelling, this.titles)
   }
+
+  britishToAmerican(text) {
+    const britishToAmericanSpelling = this.objectFlip(americanToBritishSpelling)
+    const britishToAmericanTitles = this.objectFlip(americanToBritishTitles)
+
+    return this.translate(
+      text,
+      {
+        ...britishOnly,
+        ...britishToAmericanSpelling,
+      },
+      britishToAmericanTitles
+    )
+  }
 }
 
 module.exports = Translator
