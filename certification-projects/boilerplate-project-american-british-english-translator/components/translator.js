@@ -74,6 +74,28 @@ class Translator {
 
     return text
   }
+
+  replaceWords(originalText, translatedText, wordDiffAndSpelling) {
+    const textLowerCase = originalText.toLowerCase()
+
+    let translated = translatedText
+
+    Object.entries(wordDiffAndSpelling).forEach(([key, value]) => {
+      if (
+        new RegExp(`${key} `, "gi").test(textLowerCase) ||
+        new RegExp(`${key}[^A-Za-z]`, "gi").test(textLowerCase) ||
+        new RegExp(`${key}$`, "gi").test(textLowerCase)
+      ) {
+        translated =
+          translated.replace(
+            new RegExp(key, "gi"),
+            `<span class="highlight">${value}</span>`
+          ) || translated
+      }
+    })
+
+    return translated
+  }
 }
 
 module.exports = Translator
