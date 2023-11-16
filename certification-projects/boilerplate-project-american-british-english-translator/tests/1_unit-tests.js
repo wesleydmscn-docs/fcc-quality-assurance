@@ -212,5 +212,14 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Highlight translation in I ate yogurt for breakfast.", (done) => {
+      assert.equal(
+        translator.americanToBritish("I ate yogurt for breakfast."),
+        'I ate <span class="highlight">yoghurt</span> for breakfast.'
+      )
+
+      done()
+    })
   })
 })
