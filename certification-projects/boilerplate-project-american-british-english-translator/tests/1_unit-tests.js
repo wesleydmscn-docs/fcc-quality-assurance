@@ -123,6 +123,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate First, caramelise the onions. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican("First, caramelise the onions."),
+        'First, <span class="highlight">caramelize</span> the onions.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
