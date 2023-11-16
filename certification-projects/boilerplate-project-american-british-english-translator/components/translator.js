@@ -29,6 +29,15 @@ class Translator {
       britishToAmericanTitles
     )
   }
+
+  translate(text, wordDiffAndSpelling, titles) {
+    let translated = this.replaceTitles(text, titles)
+
+    translated = this.replaceTimeFormat(translated)
+    translated = this.replaceWords(text, translated, wordDiffAndSpelling)
+
+    return translated
+  }
 }
 
 module.exports = Translator
