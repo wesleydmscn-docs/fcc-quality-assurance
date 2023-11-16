@@ -192,6 +192,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Tea time is usually around 4 or 4.30. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican("Tea time is usually around 4 or 4.30."),
+        'Tea time is usually around 4 or <span class="highlight">4.30</span>.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
