@@ -81,6 +81,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Dr. Grosh will see you now. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish("Dr. Grosh will see you now."),
+        '<span class="highlight">Dr</span> Grosh will see you now.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
