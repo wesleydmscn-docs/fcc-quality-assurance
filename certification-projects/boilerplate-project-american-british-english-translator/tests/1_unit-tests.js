@@ -221,5 +221,16 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Highlight translation in We watched the footie match for a while.", (done) => {
+      assert.equal(
+        translator.britishToAmerican(
+          "We watched the footie match for a while."
+        ),
+        'We watched the <span class="highlight">soccer</span> match for a while.'
+      )
+
+      done()
+    })
   })
 })
