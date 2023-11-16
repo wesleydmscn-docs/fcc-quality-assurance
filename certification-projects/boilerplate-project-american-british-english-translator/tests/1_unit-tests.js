@@ -72,6 +72,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate No Mr. Bond, I expect you to die. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish("No Mr. Bond, I expect you to die."),
+        'No <span class="highlight">Mr</span> Bond, I expect you to die.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
