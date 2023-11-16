@@ -61,6 +61,17 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate To play hooky means to skip class or work. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish(
+          "To play hooky means to skip class or work."
+        ),
+        'To <span class="highlight">bunk off</span> means to skip class or work.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
