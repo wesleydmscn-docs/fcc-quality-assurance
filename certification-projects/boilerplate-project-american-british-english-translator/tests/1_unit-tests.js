@@ -52,6 +52,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Like a high tech Rube Goldberg machine. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish("Like a high tech Rube Goldberg machine."),
+        'Like a high tech <span class="highlight">Heath Robinson device</span>.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
