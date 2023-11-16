@@ -100,6 +100,13 @@ class Translator {
   capitalizeFirstLetter(word) {
     return word[0].toUpperCase() + word.slice(1)
   }
+
+  objectFlip(obj) {
+    return Object.entries(obj).reduce(
+      (acc, [key, value]) => ((acc[value] = key), acc),
+      {}
+    )
+  }
 }
 
 module.exports = Translator
