@@ -38,6 +38,25 @@ class Translator {
 
     return translated
   }
+
+  replaceTitles(text, titles) {
+    const textLowerCase = text.toLowerCase()
+    let translated = text
+
+    Object.entries(titles).forEach(([key, value]) => {
+      if (textLowerCase.includes(key)) {
+        translated =
+          translated.replace(
+            new RegExp(key, "gi"),
+            `<span class="highlight">${this.capitalizeFirstLetter(
+              value
+            )}</span>`
+          ) || translated
+      }
+    })
+
+    return translated
+  }
 }
 
 module.exports = Translator
