@@ -132,6 +132,17 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate I spent the bank holiday at the funfair. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican(
+          "I spent the bank holiday at the funfair."
+        ),
+        'I spent the <span class="highlight">public holiday</span> at the <span class="highlight">carnival</span>.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
