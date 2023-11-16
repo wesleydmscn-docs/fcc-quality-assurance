@@ -23,6 +23,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate We had a party at my friend's condo. to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish("We had a party at my friend's condo."),
+        'We had a party at my friend\'s <span class="highlight">flat</span>.'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
