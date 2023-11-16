@@ -32,6 +32,17 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Can you toss this in the trashcan for me? to British English", (done) => {
+      assert.equal(
+        translator.americanToBritish(
+          "Can you toss this in the trashcan for me?"
+        ),
+        'Can you toss this in the <span class="highlight">bin</span> for me?'
+      )
+
+      done()
+    })
   })
 
   suite("British English To American English", () => { })
