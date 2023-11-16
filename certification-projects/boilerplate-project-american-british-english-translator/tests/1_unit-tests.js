@@ -143,6 +143,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate I had a bicky then went to the chippy. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican("I had a bicky then went to the chippy."),
+        'I had a <span class="highlight">cookie</span> then went to the <span class="highlight">fish-and-chip shop</span>.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
