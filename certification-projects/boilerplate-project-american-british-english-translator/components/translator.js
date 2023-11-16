@@ -11,6 +11,10 @@ class Translator {
     }
     this.titles = americanToBritishTitles
   }
+
+  americanToBritish(text) {
+    return this.translate(text, this.wordDiffAndSpelling, this.titles)
+  }
 }
 
 module.exports = Translator
