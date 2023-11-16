@@ -183,6 +183,15 @@ suite("Unit Tests", () => {
 
       done()
     })
+
+    test("Translate Prof Joyner of King's College, London. to American English", (done) => {
+      assert.equal(
+        translator.britishToAmerican("Prof Joyner of King's College, London."),
+        '<span class="highlight">Prof.</span> Joyner of King\'s College, London.'
+      )
+
+      done()
+    })
   })
 
   suite("Highlight Translations", () => { })
